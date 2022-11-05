@@ -1,0 +1,65 @@
+﻿@model IEnumerable<PizzaProject.Models.Product>
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Pizzas</h1>
+
+<p>
+    <a asp-action="Create"><h2><b>Menu</b></h2></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PizzaName)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.PizzaCrust)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Prize)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.NoOfPizzas)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.NoOfSlices)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Toppings)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PizzaName)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.PizzaCrust)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Prize)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.NoOfPizzas)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfSlices)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Toppings)
+            </td>
+            <td>
+                
+                <a asp-action="Details" asp-route-id="@item.PizzaId">ADD</a> 
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,109 @@
+﻿@model PizzaProject.Models.User
+
+@{
+    ViewData["Title"] = "login";
+}
+
+<h1>login</h1>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index" asp-controller="User" onsubmit="return validateform()" name="myform" >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" required />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" required />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile" class="control-label"></label>
+                <input asp-for="Mobile" class="form-control" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" type="email" required />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" type="password" required />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" required />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="login" class="btn btn-primary" />
+            </div>
+            <script>
+                function myFunction() {
+                    const inpObj = document.getElementById("id1");
+                    if (!inpObj.checkValidity()) {
+                        document.getElementById("demo").innerHTML = inpObj.validationMessage;
+                    }
+                }
+            </script>
+            <script>
+                function validateform() {
+                    var Name = document.myform.Name.value;
+                    var Username = document.myform.Username.value;
+                    var Password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+                    var Email = /^([A-Za-z0-9_\-\.])+\([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+                    var Mobile = document.myform.Mobile.value;
+
+
+                    if (Name == null || Name == "") {
+                        alert("Name can't be blank");
+                        return false;
+                    } else if (Username == null || Username == "") {
+                        alert("Username can't be blank");
+                        return false;
+                    } else if (Email.value.match) {
+                        document.myform.Email.value.focus();
+                        return true;
+                    } else if {
+                        alert("Invalid email address.");
+                        document.myform.Email.value.focus();
+                        return false;
+                    } else if (Password.value.match) {
+                            alert('Correct :)')
+                            return true;
+                    } else if {
+                            alert('Wrong...!')
+                            return false;
+                    } else if (Mobile.length < 11) {
+                        alert("Mobile Number  must be at least 10 characters long.");
+                        return false;
+                    }
+                }
+            </script>
+            
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index"></a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+
+
+
+
+
